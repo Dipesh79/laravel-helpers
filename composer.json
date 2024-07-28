@@ -1,0 +1,40 @@
+{
+    "name": "dipesh79/laravel-helpers",
+    "description": "Laravel Helpers",
+    "keywords": ["laravel", "helpers"],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Dipesh79\\LaravelHelpers\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dipesh79\\LaravelHelpers\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dipesh Khanal",
+            "email": "dipeshkhanal79@gmail.com",
+            "homepage": "https://khanaldipesh.com.np",
+            "role": "Maintainer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "10.5.x-dev",
+        "orchestra/testbench": "8.x-dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dipesh79\\LaravelHelpers\\LaravelHelpersServiceProvider"
+            ]
+        }
+    }
+}

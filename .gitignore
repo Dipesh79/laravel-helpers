@@ -1,0 +1,6 @@
+*.lock
+.idea
+.DS_Store
+**/.DS_Store
+vendor
+.phpunit.result.cache
