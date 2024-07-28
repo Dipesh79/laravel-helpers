@@ -6,7 +6,7 @@
 [![Total Downloads](http://poser.pugx.org/dipesh79/laravel-helpers/downloads)](https://packagist.org/packages/dipesh79/laravel-helpers)
 [![License](http://poser.pugx.org/dipesh79/laravel-helpers/license)](https://packagist.org/packages/dipesh79/laravel-helpers)
 
-The `dipesh79/laravel-helpers` package 
+The `dipesh79/laravel-helpers` package provides a collection of utility functions to simplify and enhance your Laravel development.
 
 ## Quick Start
 
