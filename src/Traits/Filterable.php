@@ -26,12 +26,30 @@ trait Filterable
     public function scopeCustomFilter(Builder $query, string $filterQuery, array $columns = []): Builder
     {
         $filterableColumns = $columns ?: $this->filterable;
+
         if (empty($filterableColumns)) {
             throw new FilterableColumnsNotSpecifiedException();
         }
-        foreach ($filterableColumns as $column) {
-            $query->orWhere($column, 'LIKE', '%' . $filterQuery . '%');
-        }
+
+        $query->where(function ($query) use ($filterableColumns, $filterQuery) {
+            foreach ($filterableColumns as $column) {
+                if (str_contains($column, '.')) {
+                    // Handle nested relationships dynamically
+                    $relations = explode('.', $column);
+                    // Get the last element as the actual column
+                    $finalColumn = array_pop($relations);
+                    $query->orWhereHas(implode('.', $relations), function ($q) use ($finalColumn, $filterQuery) {
+                        $q->where($finalColumn, 'LIKE', '%' . $filterQuery . '%');
+                    });
+                } else {
+                    // Handle direct table columns
+                    $query->orWhere($column, 'LIKE', '%' . $filterQuery . '%');
+                }
+            }
+        });
+
         return $query;
     }
+
+
 }
